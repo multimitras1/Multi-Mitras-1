@@ -72,18 +72,39 @@
 <footer>© 2025 Free PDF to Word Converter | Inspired by SmallPDF, iLovePDF, Adobe Acrobat</footer>
 
 <script>
-  function convertPDF() {
+  async function convertPDF() {
     const fileInput = document.getElementById('pdfFile');
     const file = fileInput.files[0];
-    if(!file) return alert("Please select a PDF file!");
-    
-    // For demo: Using Smartlink redirect after selection
-    // You can replace this with real backend API later
-    const smartlink = "https://lightingshovestature.com/se7mewrn?key=5c0c3d747a4de5e04a36343d8e492dcd";
-    const downloadDiv = document.getElementById('downloadLink');
-    downloadDiv.innerHTML = `<p>✅ Your PDF is ready! <a href="${smartlink}" target="_blank">Download Word File</a></p>`;
+    if (!file) return alert("Please select a PDF file!");
+
+    const apiKey = "1Mxv6xuHlazOu811omd7ZcUufrOpNH8B"; // Production Token
+
+    let formData = new FormData();
+    formData.append("file", file);
+
+    const downloadDiv = document.getElementById("downloadLink");
+    downloadDiv.innerHTML = "⏳ Converting... Please wait.";
+
+    try {
+      const response = await fetch("https://api.pdf.co/v1/pdf/convert/to/docx", {
+        method: "POST",
+        headers: { "x-api-key": apiKey },
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.error) {
+        downloadDiv.innerHTML = "❌ Error: " + result.message;
+      } else {
+        downloadDiv.innerHTML = `<p>✅ Conversion Done! <a href="${result.url}" target="_blank">Download Word File</a></p>`;
+      }
+    } catch (e) {
+      downloadDiv.innerHTML = "⚠️ Conversion failed. Try again later.";
+      console.error(e);
+    }
   }
 </script>
 
 </body>
-  </html>
+</html>
