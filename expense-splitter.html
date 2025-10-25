@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Splitter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .splitter {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    width: 350px;
+    text-align: center;
+  }
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  button {
+    background-color: #f6d365;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: #fda085;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="splitter">
+  <h2>Expense Splitter</h2>
+  <input type="number" id="total" placeholder="Total Expense">
+  <input type="number" id="people" placeholder="Number of People">
+  <button onclick="splitExpense()">Split Expense</button>
+  <h3 id="result"></h3>
+</div>
+
+<script>
+function splitExpense() {
+  const total = parseFloat(document.getElementById('total').value);
+  const people = parseInt(document.getElementById('people').value);
+
+  if(isNaN(total) || isNaN(people) || people <= 0) {
+    document.getElementById('result').innerText = "Enter valid numbers";
+    return;
+  }
+
+  const perPerson = total / people;
+  document.getElementById('result').innerText = `Each person should pay: ₹${perPerson.toFixed(2)}`;
+}
+</script>
+</body>
+</html>
