@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+  }
+  .love-calculator {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+  }
+  input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+  }
+  button {
+    background-color: #ff758c;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #fff;
+  }
+  button:hover {
+    background-color: #ff7eb3;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  p {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+<div class="love-calculator">
+  <h2>Love Calculator ❤️</h2>
+  <input type="text" id="name1" placeholder="Enter first name">
+  <input type="text" id="name2" placeholder="Enter second name">
+  <button onclick="calculateLove()">Calculate Love</button>
+  <p id="result"></p>
+</div>
+
+<script>
+function calculateLove() {
+  const name1 = document.getElementById('name1').value.trim();
+  const name2 = document.getElementById('name2').value.trim();
+
+  if (!name1 || !name2) {
+    document.getElementById('result').innerText = "Please enter both names.";
+    return;
+  }
+
+  // Generate a random love score between 50 and 100 for fun
+  const loveScore = Math.floor(Math.random() * 51) + 50;
+
+  let message = "";
+  if (loveScore > 80) {
+    message = "🔥 Perfect match! True love vibes.";
+  } else if (loveScore > 60) {
+    message = "💖 Good match! There's definitely chemistry.";
+  } else if (loveScore > 40) {
+    message = "💛 Fair match! Could work with some effort.";
+  } else {
+    message = "💔 Hmm… might be challenging, but love is unpredictable!";
+  }
+
+  document.getElementById('result').innerText = `${name1} & ${name2} compatibility: ${loveScore}%\n${message}`;
+}
+</script>
+</body>
+</html>
