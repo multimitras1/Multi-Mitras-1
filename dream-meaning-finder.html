@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Dream Meaning Finder</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .dream-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  button {
+    background-color: #89f7fe;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: #66a6ff;
+    color: #fff;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  .dream-list {
+    margin-top: 20px;
+    text-align: left;
+  }
+  .dream-item {
+    background: #f1f1f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="dream-container">
+  <h2>Advanced Dream Meaning Finder</h2>
+  <input type="text" id="dreamInput" placeholder="Describe your dream">
+  <button onclick="findDreamMeaning()">Find Meaning</button>
+  <div id="result"></div>
+  <h3>Saved Dreams:</h3>
+  <div id="dreamList" class="dream-list"></div>
+</div>
+
+<script>
+const dreamMeanings = {
+  "snake": "Seeing a snake may symbolize hidden fears, transformation, or warning of deceit.",
+  "flying": "Dreaming of flying represents freedom, ambition, or escaping limitations.",
+  "water": "Water reflects emotions. Calm water = peace, rough water = emotional turmoil.",
+  "death": "Dreams about death usually indicate change or transformation, not literal death.",
+  "teeth": "Losing teeth may symbolize insecurity, anxiety, or fear of losing control.",
+  "fire": "Fire may symbolize anger, passion, destruction, or a need for transformation.",
+  "house": "A house represents yourself. Different rooms reflect different aspects of life.",
+  "baby": "Seeing a baby represents new beginnings, innocence, or potential growth.",
+  "car": "A car represents your journey in life, control, and direction.",
+  "money": "Dreams about money often relate to self-worth, success, or security."
+};
+
+// Array to save dreams
+let savedDreams = [];
+
+function findDreamMeaning() {
+  const input = document.getElementById('dreamInput').value.toLowerCase().trim();
+  if (!input) {
+    alert("Please enter a dream description.");
+    return;
+  }
+
+  // Check for matching keywords
+  let matched = [];
+  for (let key in dreamMeanings) {
+    if (input.includes(key)) {
+      matched.push(`${key}: ${dreamMeanings[key]}`);
+    }
+  }
+
+  let resultDiv = document.getElementById('result');
+  if (matched.length > 0) {
+    resultDiv.innerHTML = matched.map(m => `<p>${m}</p>`).join('');
+  } else {
+    resultDiv.innerHTML = "<p>No specific meaning found. Try different description.</p>";
+  }
+
+  // Save dream
+  savedDreams.push({dream: input, meaning: matched.length > 0 ? matched : ["No meaning found"]});
+  updateDreamList();
+  document.getElementById('dreamInput').value = "";
+}
+
+function updateDreamList() {
+  const listDiv = document.getElementById('dreamList');
+  listDiv.innerHTML = savedDreams.map((d, i) => `
+    <div class="dream-item">
+      <strong>Dream ${i+1}:</strong> ${d.dream}<br>
+      <em>Meaning:</em> ${d.meaning.join(", ")}
+    </div>
+  `).join('');
+}
+</script>
+</body>
+</html>
