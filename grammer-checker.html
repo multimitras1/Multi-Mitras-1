@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MultiMitras - Online Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ---------- Base ---------- */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body.light{background:#f0f4f8;color:#111;}
+body.dark{background:#0d0d0d;color:#fff;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;transition:0.3s;border:none;border-radius:6px;}
+
+/* ---------- Background ---------- */
+.background{
+  position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;
+  background:linear-gradient(135deg,#8A2BE2,#00FFFF);
+  background-size:400% 400%;
+  animation:gradientBG 15s ease infinite;
+}
+@keyframes gradientBG{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* ---------- Header ---------- */
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;}
+header h1{font-family:'Orbitron',sans-serif;font-size:1.8rem;letter-spacing:1px;}
+header nav button{padding:6px 12px;background:#00FFFF;color:#000;}
+header nav button:hover{background:#8A2BE2;color:#fff;}
+
+/* ---------- Hero ---------- */
+.hero{text-align:center;padding:24px;}
+.hero h2{font-size:1.8rem;margin-bottom:8px;}
+.hero p{opacity:0.8;margin-bottom:12px;}
+
+/* ---------- Tool Cards ---------- */
+.tool-section{max-width:900px;margin:20px auto;padding:0 12px;}
+.tool-card{
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
+  padding:20px;border-radius:16px;margin-bottom:20px;box-shadow:0 8px 16px rgba(0,0,0,0.2);transition:0.3s;
+}
+.tool-card:hover{transform:translateY(-5px);}
+.tool-card h3{margin-bottom:12px;text-align:center;}
+.tool-card textarea, .tool-card input, .tool-card select{width:100%;padding:10px;border-radius:12px;border:1px solid #ccc;background:transparent;color:inherit;margin-bottom:10px;resize:none;}
+.stats{display:flex;justify-content:space-between;margin-top:8px;font-weight:600;}
+button.tool-btn{width:100%;padding:10px;margin-top:12px;background:#8A2BE2;color:#fff;border-radius:8px;}
+button.tool-btn:hover{background:#00FFFF;color:#000;}
+
+/* ---------- Footer ---------- */
+footer{text-align:center;padding:16px;font-size:0.9rem;opacity:0.8;}
+footer a{margin:0 4px;color:inherit;text-decoration:underline;}
+
+/* ---------- Dark Mode Overrides ---------- */
+body.dark .tool-card{background:rgba(0,0,0,0.5);}
+body.dark header nav button{background:#8A2BE2;color:#fff;}
+</style>
+</head>
+<body class="light">
+<div class="background"></div>
+
+<!-- Header -->
+<header>
+  <h1>MultiMitras</h1>
+  <nav>
+    <button id="theme-toggle">Dark Mode</button>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h2>Word Counter & Grammar Checker</h2>
+  <p>Type or paste your text below to count words and check grammar instantly!</p>
+</section>
+
+<div class="tool-section">
+
+  <!-- Word Counter Tool -->
+  <section class="tool-card">
+    <h3>Word Counter</h3>
+    <textarea id="wc-input" placeholder="Type or paste your text here..."></textarea>
+    <div class="stats">
+      <p>Words: <span id="wc-word-count">0</span></p>
+      <p>Characters: <span id="wc-char-count">0</span></p>
+      <p>Sentences: <span id="wc-sentence-count">0</span></p>
+    </div>
+    <button class="tool-btn" id="wc-clear">Clear Text</button>
+  </section>
+
+  <!-- Grammar Checker Tool -->
+  <section class="tool-card">
+    <h3>Grammar Checker</h3>
+    <textarea id="gc-input" placeholder="Type or paste your text here..."></textarea>
+    <button class="tool-btn" id="gc-check">Check Grammar</button>
+    <div id="gc-result" style="margin-top:12px;font-weight:600;"></div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 MultiMitras – All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+</footer>
+
+<script>
+// ---------- Dark/Light Mode ----------
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+  themeBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+});
+
+// ---------- Word Counter ----------
+const wcInput = document.getElementById('wc-input');
+const wcWord = document.getElementById('wc-word-count');
+const wcChar = document.getElementById('wc-char-count');
+const wcSentence = document.getElementById('wc-sentence-count');
+const wcClear = document.getElementById('wc-clear');
+
+function countText(text){
+  const words = text.trim().split(/\s+/).filter(w=>w.length>0);
+  const chars = text.replace(/\s/g,'');
+  const sentences = text.split(/[.!?]+/).filter(s=>s.trim().length>0);
+  wcWord.textContent = words.length;
+  wcChar.textContent = chars.length;
+  wcSentence.textContent = sentences.length;
+}
+
+wcInput.addEventListener('input', (e)=>countText(e.target.value));
+wcClear.addEventListener('click', ()=>{
+  wcInput.value='';
+  countText('');
+});
+
+// ---------- Grammar Checker (Simple JS Suggestions) ----------
+const gcInput = document.getElementById('gc-input');
+const gcBtn = document.getElementById('gc-check');
+const gcResult = document.getElementById('gc-result');
+
+// Simple JS-based grammar hints
+function simpleGrammarCheck(text){
+  let issues = [];
+  if(!text) return "Enter text to check grammar.";
+  if(/[A-Z]{2,}/.test(text)) issues.push("Avoid using all capital letters.");
+  if(/(\s{2,})/.test(text)) issues.push("Remove extra spaces.");
+  if(/[^\.\?\!]\s*$/.test(text)) issues.push("Sentence may be incomplete or missing punctuation.");
+  if(!/^[A-Z]/.test(text)) issues.push("Start sentences with a capital letter.");
+  if(issues.length===0) return "No obvious grammar issues detected!";
+  return issues.join(" ");
+}
+
+gcBtn.addEventListener('click', ()=>{
+  gcResult.textContent = simpleGrammarCheck(gcInput.value);
+});
+</script>
+</body>
+</html>
