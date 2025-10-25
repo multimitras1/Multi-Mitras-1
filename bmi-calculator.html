@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MultiMitras - BMI Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body.light{background:#f0f4f8;color:#111;}
+body.dark{background:#0d0d0d;color:#fff;}
+button{cursor:pointer;transition:0.3s;border:none;border-radius:6px;}
+.background{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(135deg,#8A2BE2,#00FFFF);background-size:400% 400%;animation:gradientBG 15s ease infinite;}
+@keyframes gradientBG{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;}
+header h1{font-family:'Orbitron',sans-serif;font-size:1.8rem;letter-spacing:1px;}
+header nav button{padding:6px 12px;background:#00FFFF;color:#000;}
+header nav button:hover{background:#8A2BE2;color:#fff;}
+.hero{text-align:center;padding:24px;}
+.hero h2{font-size:1.8rem;margin-bottom:8px;}
+.hero p{opacity:0.8;margin-bottom:12px;}
+.tool-card{max-width:400px;margin:40px auto;padding:30px;border-radius:16px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);box-shadow:0 8px 16px rgba(0,0,0,0.2);transition:0.3s;}
+.tool-card:hover{transform:translateY(-5px);}
+.tool-card h3{margin-bottom:20px;text-align:center;}
+.tool-card input{width:100%;padding:12px;border-radius:12px;border:1px solid #ccc;background:transparent;color:inherit;margin-bottom:12px;}
+button.tool-btn{width:100%;padding:12px;background:#8A2BE2;color:#fff;border-radius:8px;}
+button.tool-btn:hover{background:#00FFFF;color:#000;}
+#bmi-result{margin-top:16px;font-weight:600;text-align:center;}
+footer{text-align:center;padding:16px;font-size:0.9rem;opacity:0.8;}
+footer a{margin:0 4px;color:inherit;text-decoration:underline;}
+body.dark .tool-card{background:rgba(0,0,0,0.5);}
+body.dark header nav button{background:#8A2BE2;color:#fff;}
+</style>
+</head>
+<body class="light">
+<div class="background"></div>
+
+<header>
+  <h1>MultiMitras</h1>
+  <nav>
+    <button id="theme-toggle">Dark Mode</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>BMI Calculator</h2>
+  <p>Enter your weight and height to calculate your BMI instantly!</p>
+</section>
+
+<section class="tool-card">
+  <h3>BMI Calculator</h3>
+  <input type="number" id="bmi-weight" placeholder="Weight in kg">
+  <input type="number" id="bmi-height" placeholder="Height in cm">
+  <button class="tool-btn" id="bmi-calc">Calculate BMI</button>
+  <div id="bmi-result"></div>
+</section>
+
+<footer>
+  <p>© 2025 MultiMitras – All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+</footer>
+
+<script>
+// Dark/Light Mode
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+  themeBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+});
+
+// BMI Calculator Logic
+const bmiWeight = document.getElementById('bmi-weight');
+const bmiHeight = document.getElementById('bmi-height');
+const bmiCalc = document.getElementById('bmi-calc');
+const bmiResult = document.getElementById('bmi-result');
+
+bmiCalc.addEventListener('click', ()=>{
+  const weight = parseFloat(bmiWeight.value);
+  const height = parseFloat(bmiHeight.value)/100;
+  if(!weight || !height){
+    bmiResult.textContent = "Please enter valid weight and height!";
+    return;
+  }
+  const bmi = (weight / (height*height)).toFixed(2);
+  let category = "";
+  if(bmi < 18.5) category = "Underweight";
+  else if(bmi < 24.9) category = "Normal weight";
+  else if(bmi < 29.9) category = "Overweight";
+  else category = "Obese";
+  bmiResult.textContent = `BMI: ${bmi} (${category})`;
+});
+</script>
+</body>
+</html>
