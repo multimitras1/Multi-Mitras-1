@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Generator</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .prompt-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    width: 400px;
+    text-align: center;
+  }
+  select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  button {
+    background-color: #a8edea;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: #fed6e3;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  #prompt {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 17px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px dashed #ccc;
+  }
+</style>
+</head>
+<body>
+<div class="prompt-box">
+  <h2>AI Prompt Generator 🤖</h2>
+  <select id="category">
+    <option value="creative">Creative Writing</option>
+    <option value="art">Art & Midjourney</option>
+    <option value="business">Business Ideas</option>
+    <option value="blog">Blog Topics</option>
+    <option value="horror">Horror Story Prompts</option>
+    <option value="quotes">Inspirational Quotes</option>
+  </select>
+  <button onclick="generatePrompt()">Generate Prompt</button>
+  <p id="prompt">Choose a category to get your prompt!</p>
+</div>
+
+<script>
+const prompts = {
+  creative: [
+    "Write a story where time stops for everyone except one person.",
+    "Imagine a world where people trade memories instead of money.",
+    "Write a dialogue between a human and their AI assistant 100 years in the future."
+  ],
+  art: [
+    "A futuristic city built on floating islands, glowing at sunset — cinematic lighting.",
+    "A samurai standing in a field of cherry blossoms under moonlight — anime style.",
+    "A mysterious forest temple covered in glowing runes — fantasy art, ultra-detailed."
+  ],
+  business: [
+    "Generate a startup idea that solves a common student problem.",
+    "Create a business plan for a company that uses AI to improve healthcare.",
+    "Suggest 5 passive income ideas that can be started with less than ₹10,000."
+  ],
+  blog: [
+    "Write a blog on 'How AI is changing education in India'.",
+    "Explain the pros and cons of remote work for freelancers.",
+    "Write a detailed SEO-friendly post about 'Top 5 tech tools for small businesses'."
+  ],
+  horror: [
+    "Write a story where a mirror shows what’s happening in another dimension.",
+    "A man wakes up every night at 3:15 AM hearing whispers calling his name.",
+    "Describe an abandoned hospital where lights flicker even with no electricity."
+  ],
+  quotes: [
+    "‘The only limit to our realization of tomorrow is our doubts of today.’ – FDR",
+    "‘Success is not final; failure is not fatal: it is the courage to continue that counts.’ – Churchill",
+    "‘Don’t watch the clock; do what it does. Keep going.’ – Sam Levenson"
+  ]
+};
+
+function generatePrompt() {
+  const category = document.getElementById('category').value;
+  const list = prompts[category];
+  const randomIndex = Math.floor(Math.random() * list.length);
+  document.getElementById('prompt').innerText = list[randomIndex];
+}
+</script>
+</body>
+</html>
