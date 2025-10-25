@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Free Online Tools India | MultiMitras - Unique AI & Daily Tools</title>
+    <meta name="description" content="Free online tools for word count, grammar check, BMI calculator, dream meaning, joke generator & more – MultiMitras">
+    <meta name="keywords" content="calculator, age calculator, bmi calculator, mortgage calculator, sip calculator, emi calculator, percentage calculator, calorie calculator, compound interest calculator, date calculator, loan calculator, calculator app, all in one tool">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00FFFF, #8A2BE2);
+            --primary-gradient-light: linear-gradient(135deg, #00b3b3, #6a1bb8);
+            --header-dark: #0a0a1a;
+            --header-light: #2c3e50;
+            --bg-dark: #0f0f23;
+            --bg-card-dark: rgba(255, 255, 255, 0.05);
+            --text-dark: #ffffff;
+            --text-secondary-dark: #b0b0b0;
+            --bg-light: #f8f9fa;
+            --bg-card-light: rgba(255, 255, 255, 0.9);
+            --text-light: #333333;
+            --text-secondary-light: #666666;
+            --footer-dark: #0a0a1a;
+            --footer-light: #2c3e50;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--bg-light);
+            --bg-secondary: var(--bg-card-light);
+            --text-primary: var(--text-light);
+            --text-secondary: var(--text-secondary-light);
+            --header-bg: var(--header-light);
+            --footer-bg: var(--footer-light);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: var(--bg-dark);
+            --bg-secondary: var(--bg-card-dark);
+            --text-primary: var(--text-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --header-bg: var(--header-dark);
+            --footer-bg: var(--footer-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #8A2BE2;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-primary);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(-40px) translateX(0);
+            }
+            75% {
+                transform: translateY(-20px) translateX(-10px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #8A2BE2;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+            border-image: var(--primary-gradient) 1;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        [data-theme="light"] .tool-card {
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* FAQs Section */
+        .faqs-section {
+            padding: 100px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: var(--transition);
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--footer-bg);
+            padding: 60px 0 30px;
+            margin-top: 50px;
+            transition: var(--transition);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #8A2BE2;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes toolClick {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                padding: 25px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">MultiMitras</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="particles" id="particles"></div>
+        <div class="container hero-content">
+            <h1>Empower Your Daily Life with Free Online Tools</h1>
+            <p>From essential utilities to fun & creative experiences - All in one destination for all your needs!</p>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search tools...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <a href="#tools" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Why People Love MultiMitras</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Totally Free</h3>
+                    <p>No hidden fees, subscriptions, or paywalls. Use all tools without any cost.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                                        <h3>Safe & Secure</h3>
+                    <p>We never store your files or personal data. Your privacy is our priority.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Mobile-Friendly</h3>
+                    <p>Use our tools on your phone, tablet, or desktop. Works on all devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Easy to Use</h3>
+                    <p>No technical skills required. Just click and get instant results.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>All in One Place</h3>
+                    <p>No more searching multiple websites. Everything you need in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <h2 class="section-title">Our Tools Collection</h2>
+            
+            <!-- Daily Use Tools -->
+            <h3 class="category-title">Daily Use Tools</h3>
+            <div class="tools-grid" id="dailyTools">
+                <a href="tools/word-counter.html" class="tool-card" data-name="word counter">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>Word Counter</h3>
+                    <p>Count words, characters, sentences in your text</p>
+                </a>
+                <a href="tools/grammar-checker.html" class="tool-card" data-name="grammar checker">
+                    <div class="tool-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <h3>Grammar Checker</h3>
+                    <p>Multi-language grammar and spell checker</p>
+                </a>
+                <a href="tools/bmi-calculator.html" class="tool-card" data-name="bmi calculator">
+                    <div class="tool-icon">
+                        <i class="fas fa-weight-scale"></i>
+                    </div>
+                    <h3>BMI Calculator</h3>
+                    <p>Calculate your Body Mass Index</p>
+                </a>
+                <a href="tools/unit-converter.html" class="tool-card" data-name="unit converter">
+                    <div class="tool-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Unit Converter</h3>
+                    <p>Convert between different measurement units</p>
+                </a>
+                <a href="tools/expense-splitter.html" class="tool-card" data-name="expense splitter">
+                    <div class="tool-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Expense Splitter</h3>
+                    <p>Split bills and expenses with friends</p>
+                </a>
+            </div>
+            
+            <!-- Fun & Creative Tools -->
+            <h3 class="category-title">Fun & Creative Tools</h3>
+            <div class="tools-grid" id="funTools">
+                <a href="tools/dream-meaning.html" class="tool-card" data-name="dream meaning finder">
+                    <div class="tool-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Dream Meaning Finder</h3>
+                    <p>Discover the meaning behind your dreams</p>
+                </a>
+                <a href="tools/haunted-place.html" class="tool-card" data-name="haunted place detector">
+                    <div class="tool-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3>Haunted Place Detector</h3>
+                    <p>Explore reportedly haunted locations</p>
+                </a>
+                <a href="tools/evil-eye.html" class="tool-card" data-name="evil eye detector">
+                    <div class="tool-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Evil Eye Detector</h3>
+                    <p>Nazar Lag Gayi? Check for negative energies</p>
+                </a>
+                <a href="tools/joke-generator.html" class="tool-card" data-name="random joke generator">
+                    <div class="tool-icon">
+                        <i class="fas fa-laugh-squint"></i>
+                    </div>
+                    <h3>Random Joke Generator</h3>
+                    <p>Get a dose of laughter with random jokes</p>
+                </a>
+                <a href="tools/love-calculator.html" class="tool-card" data-name="love calculator">
+                    <div class="tool-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Love Calculator</h3>
+                    <p>Calculate love compatibility between names</p>
+                </a>
+            </div>
+            
+            <!-- Language & Productivity Tools -->
+            <h3 class="category-title">Language & Productivity Tools</h3>
+            <div class="tools-grid" id="productivityTools">
+                <a href="tools/hindi-voice.html" class="tool-card" data-name="hindi voice emotion analyzer">
+                    <div class="tool-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>Hindi Voice Emotion Analyzer</h3>
+                    <p>Analyze emotions in Hindi speech</p>
+                </a>
+                <a href="tools/shubh-muhurat.html" class="tool-card" data-name="shubh muhurat finder">
+                    <div class="tool-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <h3>Shubh Muhurat Finder</h3>
+                    <p>Find auspicious timings for events</p>
+                </a>
+                <a href="tools/ai-prompt.html" class="tool-card" data-name="prompt generator for ai">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Prompt Generator for AI</h3>
+                    <p>Generate prompts for AI in English & Hindi</p>
+                </a>
+                <a href="tools/name-picker.html" class="tool-card" data-name="name picker">
+                    <div class="tool-icon">
+                        <i class="fas fa-signature"></i>
+                    </div>
+                    <h3>Name Picker / Suggestion Tool</h3>
+                    <p>Get name suggestions for projects, babies, etc.</p>
+                </a>
+                <a href="tools/pdf-compressor.html" class="tool-card" data-name="pdf compressor">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>PDF Compressor & Merger</h3>
+                    <p>Compress and merge PDF files online</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About MultiMitras</h2>
+                <p>Welcome to MultiMitras, your smart hub for unique AI and daily-use online tools. We create modern, fast, and easy-to-use tools that make your digital life simpler — from grammar checkers supporting Indian and global languages to fun, business, and productivity utilities.</p>
+                <p>Our mission is to empower your daily life with intuitive, accessible tools that simplify tasks and spark creativity. Optimized for India, USA, and UK users, MultiMitras is responsive, SEO-friendly, and free to use. Our goal: simplify your online world with tools you've never seen before.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faqs-section" id="faqs">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faqs-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are all tools really free to use?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely! All tools on MultiMitras are completely free with no hidden charges, subscriptions, or limitations. We believe in providing accessible tools for everyone.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need to create an account to use the tools?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No account creation is required. You can use all our tools immediately without any registration. We respect your privacy and time.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my data safe when using these tools?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we prioritize your privacy. We don't store your files or personal data. All processing happens in your browser, and files are deleted immediately after processing.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do these tools work on mobile devices?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our tools are fully responsive and work perfectly on mobile phones, tablets, and desktop computers. No app download is needed.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How often do you add new tools?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We regularly add new tools based on user feedback and emerging needs. Subscribe to our newsletter to stay updated about new additions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">MultiMitras</div>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-use.html">Terms of Use</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                </ul>
+                <p class="copyright">© 2025 MultiMitras – All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const body = document.body;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const toolCards = document.querySelectorAll('.tool-card');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            toolCards.forEach(card => {
+                const toolName = card.getAttribute('data-name');
+                if (toolName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Create Floating Particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                
+                // Random animation delay
+                const delay = Math.random() * 15;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll Animation for Tool Cards
+        function animateOnScroll() {
+            const toolCards = document.querySelectorAll('.tool-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = `${Math.random() * 0.5}s`;
+                        entry.target.style.animation = 'fadeInUp 0.6s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            toolCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Tool Click Animation
+        toolCards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.animation = 'toolClick 0.3s forwards';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 300);
+            });
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                document.querySelectorAll('.faq-toggle').forEach(item => {
+                    if (item !== toggle) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+
+        // Initialize functions when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
