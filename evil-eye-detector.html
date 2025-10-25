@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evil Eye Detector</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+  }
+  .detector {
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+  }
+  input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+  }
+  button {
+    background-color: #ff512f;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #fff;
+  }
+  button:hover {
+    background-color: #dd2476;
+  }
+  h2 {
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  p {
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+<div class="detector">
+  <h2>Evil Eye Detector</h2>
+  <input type="text" id="target" placeholder="Enter name or object">
+  <button onclick="detectEvilEye()">Check</button>
+  <p id="result"></p>
+</div>
+
+<script>
+const evilEyeSigns = [
+  "Feeling unusually tired or weak",
+  "Constant bad luck or mishaps",
+  "Objects breaking suddenly",
+  "Unexpected conflicts with people",
+  "Feeling anxious or uneasy without reason",
+  "Sudden health issues"
+];
+
+function detectEvilEye() {
+  const target = document.getElementById('target').value.trim();
+  if(!target) {
+    document.getElementById('result').innerText = "Please enter a name or object.";
+    return;
+  }
+
+  // Randomly decide if the target has evil eye effect
+  const hasEvilEye = Math.random() < 0.5; // 50% chance
+  let resultText = hasEvilEye ? `⚠️ ${target} might be affected by the evil eye. Possible signs:` : `✅ ${target} seems safe from evil eye effects.`;
+
+  if(hasEvilEye) {
+    const randomSigns = evilEyeSigns.sort(() => 0.5 - Math.random()).slice(0, 3);
+    resultText += "\n- " + randomSigns.join("\n- ");
+  }
+
+  document.getElementById('result').innerText = resultText;
+}
+</script>
+</body>
+</html>
