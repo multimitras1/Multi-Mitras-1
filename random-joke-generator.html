@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Joke Generator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .joke-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 18px;
+    margin: 20px 0;
+  }
+  button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff7e5f;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: #feb47b;
+  }
+</style>
+</head>
+<body>
+<div class="joke-box">
+  <h2>Random Joke Generator</h2>
+  <p id="joke">Click below to get a new joke!</p>
+  <button onclick="generateJoke()">Get Joke</button>
+</div>
+
+<script>
+const jokes = [
+  "Why don't scientists trust atoms? Because they make up everything!",
+  "I told my computer I needed a break, and it said 'No problem, I'll go to sleep.'",
+  "Why did the scarecrow win an award? Because he was outstanding in his field!",
+  "I would tell you a joke about pizza, but it's too cheesy.",
+  "Why don't skeletons fight each other? They don't have the guts.",
+  "Why did the math book look sad? Because it had too many problems.",
+  "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+  "I asked the gym instructor if he could teach me to do the splits. He said, 'How flexible are you?' I said, 'I can’t make it on Tuesdays.'",
+  "Why did the tomato turn red? Because it saw the salad dressing!",
+  "I’m reading a book about anti-gravity. It’s impossible to put down!"
+];
+
+// Function to generate random joke
+function generateJoke() {
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  document.getElementById('joke').innerText = jokes[randomIndex];
+}
+</script>
+</body>
+</html>
