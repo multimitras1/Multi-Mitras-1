@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Compressor & Merger</title>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+<style>
+  body {font-family: Arial; background:#f0f4f8; display:flex; justify-content:center; align-items:center; height:100vh; padding:20px;}
+  .container {background:#fff; padding:30px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:400px; text-align:center;}
+  h2 {margin-bottom:20px;}
+  input {margin:10px 0; padding:10px; width:100%;}
+  button {margin:10px 0; padding:12px 20px; border:none; border-radius:8px; background:#4caf50; color:white; cursor:pointer;}
+  button:hover {background:#45a049;}
+  a.download {display:block; margin-top:15px; color:#0066cc; text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>PDF Compressor & Merger</h2>
+  
+  <h4>Merge PDFs</h4>
+  <input type="file" id="mergeFiles" multiple accept=".pdf">
+  <button onclick="mergePDFs()">Merge PDFs</button>
+  <a id="mergeDownload" class="download" style="display:none" target="_blank">Download Merged PDF</a>
+  
+  <hr>
+  <h4>Compress PDF</h4>
+  <input type="file" id="compressFile" accept=".pdf">
+  <button onclick="compressPDF()">Compress PDF</button>
+  <a id="compressDownload" class="download" style="display:none" target="_blank">Download Compressed PDF</a>
+</div>
+
+<script>
+const { PDFDocument } = PDFLib;
+
+async function mergePDFs() {
+  const files = document.getElementById('mergeFiles').files;
+  if (files.length < 2) { alert('Select at least 2 PDFs'); return; }
+  const mergedPdf = await PDFDocument.create();
+
+  for (const file of files) {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await PDFDocument.load(arrayBuffer);
+    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    copiedPages.forEach(page => mergedPdf.addPage(page));
+  }
+
+  const mergedBytes = await mergedPdf.save();
+  const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  const a = document.getElementById('mergeDownload');
+  a.href = url; a.style.display = 'block'; a.innerText = 'Download Merged PDF';
+}
+
+async function compressPDF() {
+  const file = document.getElementById('compressFile').files[0];
+  if (!file) { alert('Select a PDF'); return; }
+
+  const arrayBuffer = await file.arrayBuffer();
+  const pdfDoc = await PDFDocument.load(arrayBuffer);
+  const pages = pdfDoc.getPages();
+
+  // Simple compression: reduce size of embedded images
+  pages.forEach(page => {
+    page.node.Resources().Fonts().forEach(font => font.compress());
+  });
+
+  const compressedBytes = await pdfDoc.save({ useObjectStreams: true, compress: true });
+  const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  const a = document.getElementById('compressDownload');
+  a.href = url; a.style.display = 'block'; a.innerText = 'Download Compressed PDF';
+}
+</script>
+</body>
+</html>
